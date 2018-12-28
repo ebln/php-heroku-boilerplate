@@ -20,7 +20,6 @@ services:
         environment:
             XDEBUG_REMOTE_HOST: ${XDEBUG_REMOTE_HOST}
             DATABASE_URL: postgres://postgres:supersecret@db:5432/default
-            TIMES: 10
         depends_on:
             - db
             - redis
