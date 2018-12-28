@@ -34,7 +34,11 @@ Provides a minimal structure for a local-dockerized php project targeted for Her
 ## Setup
 
 * Setup git:
-    * clone
+    * clone this boilerplate
+        * ```bash
+          NEW_PROJECT_NAME=FOOBAR; \
+          git clone https://github.com/ebln/php-heroku-boilerplate.git ${NEW_PROJECT_NAME} && cd ${NEW_PROJECT_NAME}  
+          ```
     * or `git init;`
     * configure git for your privacy demands
         ```bash
@@ -45,6 +49,12 @@ Provides a minimal structure for a local-dockerized php project targeted for Her
         ```
     * if this is a new repository, run:
         * `git add -A && git commit -m 'Initial commit'`
+    * Create a new (origin) repository
+    * ```bash
+      REPOSITORY_NAME=FOOBAR; \
+      git remote set-url origin git@github.com-ebln:ebln/${REPOSITORY_NAME}  
+      ```
+    * and push `git push -u origin master`
         
 * Setup docker and debug prerequisites
     * add `127.0.0.1	php.local` to `/etc/hosts`
