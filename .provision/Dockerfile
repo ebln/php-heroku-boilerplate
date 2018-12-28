@@ -10,12 +10,15 @@ RUN apt update && apt install -y \
     nano \
     procps \
     libpq-dev \
+    libicu-dev \
 #    libfreetype6-dev \
 #    libjpeg62-turbo-dev \
 #    libpng-dev \
-#    libssl-dev \
-#    g++ \
-    && docker-php-ext-install -j$(nproc) pdo_pgsql && docker-php-ext-enable pdo_pgsql \
+#   @see https://hub.docker.com/_/php/#php-core-extensions
+#   installing intl for symfony bcmath for laravel (consider soap for phpunit)
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install -j$(nproc) intl bcmath \
+    && docker-php-ext-install -j$(nproc) pdo_pgsql \
     && pecl install xdebug-2.6.1 && docker-php-ext-enable xdebug \
     && pecl install redis && docker-php-ext-enable redis  \
     && docker-php-source delete \
