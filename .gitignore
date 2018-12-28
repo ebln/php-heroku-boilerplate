@@ -1,0 +1,5 @@
+vendor/
+.env
+.idea
+/coverage/
+/phpunit.xml

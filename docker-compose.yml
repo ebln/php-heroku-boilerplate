@@ -1,0 +1,44 @@
+version: '3.6'
+services:
+    # web is bundling php-fpm & nginx
+    web:
+        build:
+            context: ./.provision
+            args:
+                PHP_TARGET_VERSION: 7.2
+        image: php-fpm-nginx
+        ports:
+            - "8080:80"
+        volumes:
+            - ./web:/var/www/html
+            - ./src:/var/www/src
+            - ./vendor:/var/www/vendor
+        environment:
+            XDEBUG_REMOTE_HOST: ${XDEBUG_REMOTE_HOST}
+            DATABASE_URL: postgres://postgres:supersecret@db:5432/default
+            TIMES: 10
+        depends_on:
+            - db
+            - redis
+    db:
+        image: postgres:alpine
+        restart: always
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER:     postgres
+            POSTGRES_PASSWORD: supersecret
+            POSTGRES_DB:       default
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+    redis:
+        image: redis:alpine
+        ports:
+            - "6379:6379"
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8081:8080
+volumes:
+    pgdata: {}

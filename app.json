@@ -1,0 +1,9 @@
+{
+  "name": "PHP Heroku Boilerplate",
+  "description": "Heroku & Docker boilerplate for PHP development",
+  "addons": [
+    "papertrail:papertrail:choklad",
+    "heroku-postgresql:hobby-dev",
+    "heroku-redis:hobby-dev"
+  ]
+}
