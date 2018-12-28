@@ -1,5 +1,8 @@
-vendor/
-.env
 .idea
+.env
+/var/
+/vendor/
 /coverage/
+/.env.local
+/.env.*.local
 /phpunit.xml
