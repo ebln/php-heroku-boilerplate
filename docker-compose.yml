@@ -13,6 +13,8 @@ services:
             - ./public:/var/www/public
             - ./src:/var/www/src
             - ./vendor:/var/www/vendor
+            - ./config:/var/www/config
+            - ./var:/var/www/var
         environment:
             XDEBUG_REMOTE_HOST: ${XDEBUG_REMOTE_HOST}
             DATABASE_URL: postgres://postgres:supersecret@db:5432/default
