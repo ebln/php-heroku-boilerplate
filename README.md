@@ -88,7 +88,7 @@ Provides a minimal structure for a local-dockerized php project targeted for Her
       composer.phar install && git add composer.lock && git commit -m 'Add composer.lock'
       ```
 * Push to Heroku
-    * for Symfony 4 to
+    * for Symfony 4 set these environment variables
         * `heroku config:set APP_ENV=prod APP_SECRET=$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c32)`
     * `git push heroku master`
     * check `heroku open`
