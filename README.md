@@ -30,6 +30,17 @@ Provides a minimal structure for a local-dockerized php project targeted for Her
 * [Review and edit Procfile](Procfile)  
     * still fine to use nginx?
     * and check if `heroku.yml` is already widely supported and you wanted to migrate
+    
+* Review and edit cnfiguration files or variables
+    * consider to log to php://stderr (and/or stdout) in production
+        * https://devcenter.heroku.com/articles/getting-started-with-symfony#changing-the-log-destination-for-production
+    * Symfony 4:
+        * Trusting the Load Balancer
+            * https://devcenter.heroku.com/articles/getting-started-with-symfony#ctrusting-the-load-balancer
+        * Steps to start with Postgres
+            * http://chrishodgsonweb.co.uk/symfony/2018/05/17/symfony4-postgress/
+            * https://www.orbitale.io/2018/01/05/deploy-a-symfony-flex-project-on-heroku.html#install-a-database
+            
 
 ## Setup
 
@@ -89,3 +100,6 @@ Provides a minimal structure for a local-dockerized php project targeted for Her
 * Docker clean-up
     * `docker system prune --all` (keeps data volumes)
     * `docker system prune --all  --volumes` (deletes data volumes)
+
+## TODO:
+https://www.orbitale.io/2018/01/05/deploy-a-symfony-flex-project-on-heroku.html
