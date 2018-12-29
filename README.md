@@ -100,6 +100,4 @@ Provides a minimal structure for a local-dockerized php project targeted for Her
 * Docker clean-up
     * `docker system prune --all` (keeps data volumes)
     * `docker system prune --all  --volumes` (deletes data volumes)
-
-## TODO:
-https://www.orbitale.io/2018/01/05/deploy-a-symfony-flex-project-on-heroku.html
+    
