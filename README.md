@@ -64,7 +64,7 @@ Provides a minimal structure for a local-dockerized php project targeted for Her
     * Create a new (origin) repository
     * ```bash
       REPOSITORY_NAME=FOOBAR; \
-      git remote set-url origin git@github.com-ebln:ebln/${REPOSITORY_NAME}  
+      git remote add origin git@github.com-ebln:ebln/${REPOSITORY_NAME}.git
       ```
     * and push `git push -u origin master`
         
