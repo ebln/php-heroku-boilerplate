@@ -53,6 +53,7 @@ Provides a minimal structure for a local-dockerized php project targeted for Her
     * or `git init;`
     * configure git for your privacy demands
         ```bash
+        git remote remove origin; \
         git config --list; \
         git config user.email "sokolow@net.invalid"; \
         git config user.name "Распутин"; \
