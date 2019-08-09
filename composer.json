@@ -27,7 +27,7 @@
     "scripts": {
         "compile": [
             "echo 'Add on-heroku-build steps here! e.g. doctrine:migrations:migrate – See https://devcenter.heroku.com/articles/php-support#custom-compile-step'"
-        ]
+        ],
         "phpunit": "phpunit --coverage-text",
         "test": [
             "@phpunit"
