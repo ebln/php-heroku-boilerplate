@@ -50,6 +50,7 @@ Provides a minimal structure for a local-dockerized php project targeted for Her
           NEW_PROJECT_NAME=FOOBAR; \
           git clone https://github.com/ebln/php-heroku-boilerplate.git ${NEW_PROJECT_NAME} && cd ${NEW_PROJECT_NAME}  
           ```
+          * optional `rm -rf .git && git init` # to flush boilerplate's git history
     * or `git init;`
     * configure git for your privacy demands
         ```bash
