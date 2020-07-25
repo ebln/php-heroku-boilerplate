@@ -4,8 +4,14 @@ services:
     web:
         build:
             context: ./.provision
-            args:
-                PHP_TARGET_VERSION: 7.2
+        depends_on:
+            - db
+            - redis
+        environment:
+            DATABASE_URL: postgres://postgres:supersecret@db:5432/default
+            PHP_IDE_CONFIG: "serverName=php.local"
+        extra_hosts:
+            - "host.docker.internal:${XDEBUG_REMOTE_HOST}"
         image: php-fpm-nginx
         ports:
             - "8080:80"
@@ -17,12 +23,6 @@ services:
             - ./var:/var/www/var
             - ./.env:/var/www/.env
             - ./composer.json:/var/www/composer.json
-        environment:
-            XDEBUG_REMOTE_HOST: ${XDEBUG_REMOTE_HOST}
-            DATABASE_URL: postgres://postgres:supersecret@db:5432/default
-        depends_on:
-            - db
-            - redis
     db:
         image: postgres:alpine
         ports:
