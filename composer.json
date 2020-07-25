@@ -1,24 +1,26 @@
 {
     "name": "brnc/heroku-boilerplate",
-    "description": "Heroku & Docker boilerplate for PHP development",
+    "type": "project",
     "license": "proprietary",
+    "description": "Heroku & Docker boilerplate for PHP development",
     "authors": [
         {
             "name": "me",
             "email": "me@here.invalid"
         }
     ],
-    "autoload": {
-        "psr-4": {
-            "brnc\\Boilerplate\\": "src/"
-        }
-    },
     "require": {
-        "php": "~7.4"
+        "php": "~7.2.0"
     },
     "require-dev": {
         "heroku/heroku-buildpack-php": "*",
         "roave/security-advisories": "dev-master"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "brnc\\Boilerplate\\": "src/"
+        }
     },
     "archive": {
         "exclude": ["vendor/*", "tests/", ".*", "phpunit.xml.dist", "coverage/"]
