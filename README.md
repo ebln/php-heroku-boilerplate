@@ -33,10 +33,10 @@ Provides a minimal structure for a local-dockerized php project targeted for Her
     
 * Review and edit cnfiguration files or variables
     * consider to log to php://stderr (and/or stdout) in production
-        * https://devcenter.heroku.com/articles/getting-started-with-symfony#changing-the-log-destination-for-production
-    * Symfony 4:
+        * https://devcenter.heroku.com/articles/deploying-symfony4#logging
+    * Symfony 4+:
         * Trusting the Load Balancer
-            * https://devcenter.heroku.com/articles/getting-started-with-symfony#ctrusting-the-load-balancer
+            * https://devcenter.heroku.com/articles/deploying-symfony4#trusting-the-heroku-router
         * Steps to start with Postgres
             * http://chrishodgsonweb.co.uk/symfony/2018/05/17/symfony4-postgress/
             * https://www.orbitale.io/2018/01/05/deploy-a-symfony-flex-project-on-heroku.html#install-a-database
@@ -90,8 +90,8 @@ Provides a minimal structure for a local-dockerized php project targeted for Her
       composer.phar install && git add composer.lock && git commit -m 'Add composer.lock'
       ```
 * Push to Heroku
-    * for Symfony 4 set these environment variables
-        * `heroku config:set APP_ENV=prod APP_SECRET=$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c32)`
+    * for Symfony 4+ set these environment variables
+        * `heroku config:set APP_SECRET=$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c32) APP_ENV=prod`
     * `git push heroku master`
     * check `heroku open`
 
