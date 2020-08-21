@@ -32,15 +32,8 @@ Provides a minimal structure for a local-dockerized PHP project targeted for Her
     * and check if `heroku.yml` is already widely supported and you wanted to migrate
     
 * Review and edit cnfiguration files or variables
-    * consider to log to php://stderr (and/or stdout) in production
-        * https://devcenter.heroku.com/articles/deploying-symfony4#logging
-    * Symfony 4+:
-        * Trusting the Load Balancer
-            * https://devcenter.heroku.com/articles/deploying-symfony4#trusting-the-heroku-router
-        * Steps to start with Postgres
-            * http://chrishodgsonweb.co.uk/symfony/2018/05/17/symfony4-postgress/
-            * https://www.orbitale.io/2018/01/05/deploy-a-symfony-flex-project-on-heroku.html#install-a-database
-            
+    * consider to log to `php://stderr` and/or stdout
+        * as it's docker and 12-factor standard
 
 ## Setup
 
@@ -104,3 +97,26 @@ Provides a minimal structure for a local-dockerized PHP project targeted for Her
     * `docker system prune --all` (keeps data volumes)
     * `docker system prune --all  --volumes` (deletes data volumes)
     
+## Installing Symfony 5
+* Forget about:
+  * Symfony CLI tool (~installer)
+    * if you still go with it you might need `apt-get update && apt-get install git`
+   * also a plain `cd /var && composer create-project symfony/website-skeleton` doesn't work well with non-empty directories.
+* Alter your `docker-compose.yml` and ensure that it's synced into the container
+* Merge the contents of https://raw.githubusercontent.com/symfony/website-skeleton/5.1/composer.json into your own `docker-compose.yml`
+  * reorder your `docker-compose.yml` before to match the order of the website-skeleton to ease the merging
+* Rename or delete `public/index.php` to enable the creation of the Symfony's one
+* Delete your lock file: `rm composer.lock`
+* Run `composer install` inside the container
+* Do `chown -R 1000:1000 *`
+* Add all new files to git
+* Change the `Procfile` to `web: vendor/bin/heroku-php-nginx -C .provision/heroku-symfony-nginx.conf public/`
+* Review and edit configuration files or variables
+  * log to `php://stderr` and/or stdout
+    * https://devcenter.heroku.com/articles/deploying-symfony4#logging
+  * Trusting the Load Balancer
+    * https://devcenter.heroku.com/articles/deploying-symfony4#trusting-the-heroku-router
+  * Additional reads
+    * Steps to start with Postgres
+      * http://chrishodgsonweb.co.uk/symfony/2018/05/17/symfony4-postgress/
+      * https://www.orbitale.io/2018/01/05/deploy-a-symfony-flex-project-on-heroku.html#install-a-database
