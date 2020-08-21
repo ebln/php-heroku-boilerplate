@@ -65,6 +65,7 @@ Provides a minimal structure for a local-dockerized PHP project targeted for Her
 * Setup docker and debug prerequisites
     * add `127.0.0.1	php.local` to `/etc/hosts`
     * to use xdebug export your local IP: `export XDEBUG_REMOTE_HOST=10.0.0.1`
+        * un Linux you may also add `export XDEBUG_REMOTE_HOST=$(ip route | grep docker0 | awk '{print $9}')` to your `.bashrc`
     
 * Setup Heroku
     * assuming Heroku CLI was installed
@@ -85,11 +86,12 @@ Provides a minimal structure for a local-dockerized PHP project targeted for Her
 * Push to Heroku
     * for Symfony 4+ set these environment variables
         * `heroku config:set APP_SECRET=$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c32) APP_ENV=prod`
-    * `git push heroku master`
+    * `git push heroku master` deploys to Heroku
+      * or `git push heroku HEAD:master --force` to deploy the current branch
     * check `heroku open`
 
 * Use Docker for local development
-    * `docker-compose up -d`
+    * `docker-compose up -d` or use `make up`
     * application at http://php.local:8080
     * Adminer http://localhost:8081/?pgsql=db&username=postgres
     
