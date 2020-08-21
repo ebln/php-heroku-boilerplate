@@ -1,6 +1,6 @@
 # php-heroku-boilerplate
 
-Provides a minimal structure for a local-dockerized php project targeted for Heroku.
+Provides a minimal structure for a local-dockerized PHP project targeted for Heroku.
 
 ## Consider
 
